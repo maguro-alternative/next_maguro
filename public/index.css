@@ -1,0 +1,497 @@
+
+#ba{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	z-index: 0;
+}
+
+#canvasOverlay {
+	top: 0;
+	left: 0;
+	min-height: 100%;
+	/*min-width:100vw;
+	min-height:100vh;*/
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: fixed;
+	/*position: fixed;*/
+	mix-blend-mode: hard-light;
+}
+
+#ifover {
+	top: 0;
+	left: 0;
+	min-height:100%;
+	min-width:100%;
+	width: 100%;
+	z-index: -1;
+	/*min-width:100vw;
+	min-height:100vh;*/
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: absolute;
+	/*position: fixed;*/
+	mix-blend-mode: hard-light;
+}
+
+#bg {
+	/*position: fixed;*/
+	z-index: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	/*min-width:100vw;
+	height:100vh;
+	min-height:100vh;*/
+	overflow-x: hidden;
+	overflow-y: hidden;
+	min-height: 100vh;
+	padding-top: 0%;
+	background: linear-gradient(to bottom,
+	hsl(145, 33%, 48%),
+	hsl(152, 21%, 54%),
+	hsl(175, 20%, 53%));
+	animation: AnimationName 10s ease infinite;
+}
+
+.container {
+	max-width: 900px;
+	/*max-width: 480px;*/
+	margin: 0 auto;
+}
+
+.disgetbot{
+	position: relative;
+	margin-left: 3%;
+	margin-top: 10px;
+	height: 550px; 
+	width: 400px;
+}
+
+/*記事で使うテキストボックス*/
+.wrapper {
+	display: flex;
+	/*max-width: 940px;*/
+	justify-content: space-around;
+	position: relative;
+	flex-wrap: nowrap;
+}
+
+/*トップのテキストボックス*/
+.topwrapper {
+	display: block;
+	position: relative;
+	flex-wrap: nowrap;
+}
+
+.topbar{
+	margin-right: 30%;
+	margin-left: 10%;
+	margin-bottom: 1%;
+	flex-basis: 20%;
+}
+
+.topmainbar{
+	flex-basis: 60%;
+	margin-left: 0px;
+	min-width: 65%;
+}
+
+.textback {
+	background: #fff;
+	min-width: 70%;
+	padding: 20px;
+	border: 5px solid #999;
+	border-radius: 10px;
+	line-height:1.8rem;
+}
+
+.global-nav {
+	font-size: 18px;
+	width: 940px;
+	background-color: #eff;
+	position: fixed;
+	z-index: 2;
+	/*width: auto;*/
+}
+ul.nav-list{
+	display: table;
+	margin: 0 auto;
+	padding: 0;
+	width: 80%;	
+	text-align: center;
+	position: relative;
+}
+.nav-list li{
+	display: table-cell;
+	min-width: 50px;
+}
+.nav-list a{
+	display: block;
+	width: 100%;
+	padding: 10px 0;
+	text-decoration: none;
+	color: #555;
+	font-weight: bold;
+}
+ul li:hover{
+	background-color: #FFF2CC;
+}
+
+@media screen and (min-width: 426px) and (max-width: 1280px)  {
+	body{
+		font-size: 1.1rem;
+	}
+	/*iphone*/
+	.container {
+		/*max-width: 480px;*/
+		margin: 0% 5% 0% 5%;
+	}
+	.textback {
+		background: #fff;
+		min-width: 95%;
+		padding: 3%;
+		border: 5px solid #999;
+		border-radius: 10px;
+		line-height:1.8rem;
+	}
+	.wrapper {
+		display: flex;
+		min-width: 640px;
+		/*justify-content: space-around;*/
+		position: relative;
+		/*flex-wrap: nowrap;*/
+	}
+	.topwrapper {
+		display: block;
+		position: relative;
+		/*flex-wrap: nowrap;*/
+	}
+	.global-nav {
+		font-size: 28px;
+		background-color: #eff;
+		position: fixed;
+		z-index: 2;
+		width: 90%;
+	}
+	ul.nav-list{
+		display: table;
+		margin: 0 auto;
+		padding: 0;
+		width: 80%;	
+		text-align: center;
+		position: relative;
+	}
+	.nav-list li{
+		display: table-cell;
+		min-width: 50px;
+	}
+	.nav-list a{
+		display: block;
+		width: 100%;
+		padding: 10px 0;
+		text-decoration: none;
+		color: #555;
+		font-weight: bold;
+	}
+	#ba{
+		position: absolute;
+		top: 0;
+		left: 0;
+		/*width: 100%;*/
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+	#canvasOverlay {
+		min-height: 100%;
+		/*top: 0;
+		left: 0;*/
+		/*width: 100%;*/
+		/*min-width:100vw;
+		min-height:100vh;*/
+		overflow-x: hidden;
+		overflow-y: hidden;
+		position: fixed;
+		/*position: fixed;*/
+		mix-blend-mode: hard-light;
+	}
+	#bg {
+		/*position: fixed;*/
+		position: fixed;
+		top: 0;
+		left: 0;
+		/*width: 100%;*/
+		/*min-width:100vw;
+		height:100vh;
+		min-height:100vh;*/
+		overflow-x: hidden;
+		overflow-y: hidden;
+		min-height: 100vh;
+		padding-top: 0%;
+		background: linear-gradient(to bottom,
+		hsl(145, 60%, 40%),
+		hsl(152, 50%, 60%),
+		hsl(175, 40%, 40%));
+		animation: AnimationName 10s ease infinite;
+	}
+	.pic-pc{
+		position: relative;
+		left: 60px;
+		width: 180px;
+		height: 180px;
+	}
+	.sumaho{
+		width: 400px;
+		height: 700px;
+	}
+	.mainbar{
+		flex-basis: 80%;
+		margin-left: 1%;
+		max-width: 85%;
+	}
+	.sidebar{
+		display: none;
+		flex-basis: 30%;
+		margin-left: 10px;
+		min-width: 10%;
+	}
+	.topmainbar{
+		flex-basis: 60%;
+		margin-left: 0px;
+		min-width: 80%;
+	}
+	.topbar{
+		margin-right: 10%;
+		margin-left: 10%;
+		margin-bottom: 1%;
+		flex-basis: 20%;
+	}
+	.dislive{
+		/*width: 460px;
+		height: 80px;*/
+		width: 90%;
+		height: 90%;
+	}
+	.cpdl{
+		width: 600px;
+		height: 320px;
+	}
+	.disgetbot{
+		position: relative;
+		margin-left: 1%;
+		width: 500px;
+		height: 500px;
+	}
+	.flex-video {
+		width: 500px;
+		height: 400px;
+		margin-left: 1%;
+		margin-bottom: 1rem;
+		overflow: hidden;
+		padding-bottom: 5%;
+		padding-top: 1.5625rem;
+		position: relative
+	}
+	.catchcopy {
+		color: #fff;
+		position: absolute;
+		top: 550px;
+		right: 150px;
+		font-size: 30px;
+		font-weight: 200;
+		line-height: 33px;
+		letter-spacing: 3px;
+		z-index: 2;
+		display: inline;
+	}
+	.embedup {
+		top: 50px;
+		width: 400px;
+		height: 200px;
+	}
+	.lineren{
+		width: 400px;
+		height: 200px;
+	}
+}
+@media screen and (min-width: 320px) and (max-width: 425px)  {
+	body{
+		font-size: 1.1rem;
+	}
+	/*iphone*/
+	.container {
+		/*max-width: 480px;*/
+		margin: 0 5%;
+	}
+	.textback {
+		background: #fff;
+		min-width: 90%;
+		padding: 20px;
+		border: 5px solid #999;
+		border-radius: 10px;
+		line-height:1.8rem;
+	}
+	.wrapper {
+		display: flex;
+		min-width: 640px;
+		/*justify-content: space-around;*/
+		position: relative;
+		/*flex-wrap: nowrap;*/
+	}
+	.topwrapper {
+		display: block;
+		position: relative;
+		/*flex-wrap: nowrap;*/
+	}
+	.global-nav {
+		font-size: 18px;
+		background-color: #eff;
+		position: fixed;
+		z-index: 2;
+		width: 500px;
+	}
+	ul.nav-list{
+		display: table;
+		margin: 0 auto;
+		padding: 0;
+		width: 80%;	
+		text-align: center;
+		position: relative;
+	}
+	.nav-list li{
+		display: table-cell;
+		min-width: 50px;
+	}
+	.nav-list a{
+		display: block;
+		width: 100%;
+		padding: 10px 0;
+		text-decoration: none;
+		color: #555;
+		font-weight: bold;
+	}
+	#ba{
+		position: absolute;
+		top: 0;
+		left: 0;
+		/*width: 100%;*/
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+	#canvasOverlay {
+		min-height: 100%;
+		/*top: 0;
+		left: 0;*/
+		/*width: 100%;*/
+		/*min-width:100vw;
+		min-height:100vh;*/
+		overflow-x: hidden;
+		overflow-y: hidden;
+		position: fixed;
+		/*position: fixed;*/
+		mix-blend-mode: hard-light;
+	}
+	#bg {
+		/*position: fixed;*/
+		position: fixed;
+		top: 0;
+		left: 0;
+		/*width: 100%;*/
+		/*min-width:100vw;
+		height:100vh;
+		min-height:100vh;*/
+		overflow-x: hidden;
+		overflow-y: hidden;
+		min-height: 100vh;
+		padding-top: 0%;
+		background: linear-gradient(to bottom,
+		hsl(145, 60%, 40%),
+		hsl(152, 50%, 60%),
+		hsl(175, 40%, 40%));
+		animation: AnimationName 10s ease infinite;
+	}
+	.pic-pc{
+		position: relative;
+		left: 60px;
+		width: 180px;
+		height: 180px;
+	}
+	.sumaho{
+		width: 400px;
+		height: 700px;
+	}
+	.mainbar{
+		flex-basis: 80%;
+		margin-left: 1%;
+		max-width: 85%;
+	}
+	.sidebar{
+		display: none;
+		flex-basis: 30%;
+		margin-left: 10px;
+		min-width: 10%;
+	}
+	.topmainbar{
+		flex-basis: 60%;
+		margin-left: 0px;
+		min-width: 80%;
+	}
+	.topbar{
+		margin-right: 10%;
+		margin-left: 10%;
+		margin-bottom: 1%;
+		flex-basis: 20%;
+	}
+	.dislive{
+		/*width: 460px;
+		height: 80px;*/
+		width: 90%;
+		height: 90%;
+	}
+	.cpdl{
+		width: 600px;
+		height: 320px;
+	}
+	.disgetbot{
+		position: relative;
+		margin-left: 1%;
+		width: 500px;
+		height: 500px;
+	}
+	.flex-video {
+		width: 500px;
+		height: 400px;
+		margin-left: 1%;
+		margin-bottom: 1rem;
+		overflow: hidden;
+		padding-bottom: 5%;
+		padding-top: 1.5625rem;
+		position: relative
+	}
+	.catchcopy {
+		color: #fff;
+		position: absolute;
+		top: 550px;
+		right: 150px;
+		font-size: 30px;
+		font-weight: 200;
+		line-height: 33px;
+		letter-spacing: 3px;
+		z-index: 2;
+		display: inline;
+	}
+	.embedup {
+		top: 50px;
+		width: 400px;
+		height: 200px;
+	}
+	.lineren{
+		width: 400px;
+		height: 200px;
+	}
+}
