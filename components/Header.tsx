@@ -1,11 +1,10 @@
 import Link from 'next/link';
+import Head from 'next/head'
 
 export default function Header() {
   return (
-    <header className="text-gray-600 body-font bg-blue-500 z-2">
-      <meta name="viewport" content="width=640" />
-      <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-      <link rel="stylesheet" href="index.css"/>
+    <header className="body-font z-2">
+      <title>Devil May Cry</title>
       <script defer src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
       <script defer src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
       <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossOrigin="anonymous"></script>
