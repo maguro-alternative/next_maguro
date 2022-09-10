@@ -50,7 +50,7 @@ export default function Home({ blog,totalCount }: Props) {
   );
 }    
 export const getServerSideProps = async () => {
-  const data = await client.get({ endpoint: 'blog' ,queries: { limit: 20, offset: 0, limit: 5 } });
+  const data = await client.get({ endpoint: 'blog' ,queries: {  offset: 0, limit: 5 } });
 
   return {
     props: {
