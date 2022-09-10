@@ -117,7 +117,7 @@
 	background-color: #eff;
 	position: fixed;
 	z-index: 2;
-	margin-left: 290px;
+	margin-left: 15%;
 	/*width: auto;*/
 }
 ul.nav-list{
@@ -155,15 +155,15 @@ ul li:hover{
 	}
 	.textback {
 		background: #fff;
-		min-width: 95%;
-		padding: 3%;
+		max-width: 55%;
+		padding: 1%;
 		border: 5px solid #999;
 		border-radius: 10px;
 		line-height:1.8rem;
 	}
 	.wrapper {
 		display: flex;
-		min-width: 640px;
+		min-width: 320px;
 		/*justify-content: space-around;*/
 		position: relative;
 		/*flex-wrap: nowrap;*/
@@ -174,11 +174,12 @@ ul li:hover{
 		/*flex-wrap: nowrap;*/
 	}
 	.global-nav {
-		font-size: 28px;
+		font-size: 20px;
 		background-color: #eff;
 		position: fixed;
 		z-index: 2;
-		width: 90%;
+		margin-left: 7%;
+		width: 80%;
 	}
 	ul.nav-list{
 		display: table;
@@ -252,7 +253,7 @@ ul li:hover{
 	}
 	.mainbar{
 		flex-basis: 80%;
-		margin-left: 1%;
+		margin-left: 12%;
 		max-width: 85%;
 	}
 	.sidebar{
@@ -284,7 +285,7 @@ ul li:hover{
 	}
 	.disgetbot{
 		position: relative;
-		margin-left: 1%;
+		margin-left: 15%;
 		width: 500px;
 		height: 500px;
 	}
@@ -350,12 +351,12 @@ ul li:hover{
 		/*flex-wrap: nowrap;*/
 	}
 	.global-nav {
-		font-size: 18px;
+		font-size: 14px;
 		background-color: #eff;
 		position: fixed;
 		z-index: 2;
-		width: 300px;
-		margin-left: 20px;
+		width: 280px;
+		/*margin-left: 10%;*/
 	}
 	ul.nav-list{
 		display: table;
