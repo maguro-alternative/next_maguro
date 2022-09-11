@@ -27,16 +27,20 @@ export default function BlogPageId({ blog }:Props) {
               {blog.title}
             </div>
           </div>
-          {blog.tag && (
+          {blog.tags && blog.tags.map( blog => (
             <div className="flex items-center justify-start mt-4 mb-4">
               <div className="px-2 py-1 font-bold bg-red-400 text-white rounded-lg">
-                #{blog.tag}
+                #{blog.name}
               </div>
             </div>
-          )}
+          ))}
           <div className="mt-2">
             <div className="text-2xl text-gray-700 mt-4 rounded ">
-              {blog.body}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `${blog.body}`,
+                }}
+              />
             </div>
           </div>
         </div>

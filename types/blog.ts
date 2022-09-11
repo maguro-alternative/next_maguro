@@ -11,5 +11,20 @@ export type Blog = {
     height: number;
     width: number;
   };
-  tag: string;
+  tags: [{
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    revisedAt: string;
+    name:string;
+  }],
+  category: {
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    revisedAt: string;
+    name:string;
+  }
 };

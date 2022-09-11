@@ -31,11 +31,11 @@ export default function BlogPageId({ blog, totalCount }:Props) {
                     </Link>
                   </div>
                   <div className="px-6 pt-4 pb-2 relative">
-                    {article.tag && (
+                    {article.tags && article.tags.map(article => (
                       <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                        #{article.tag}
+                        #{article.name}
                       </span>
-                    )}
+                    ))}
                   </div>
                 </div>
               </div>
