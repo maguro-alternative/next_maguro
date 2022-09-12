@@ -19,7 +19,7 @@ export default function Home({ blog,totalCount,category }: Props) {
       <ul>
         {category.map((category) => (
           <li className='text-white relative z-2' key={category.id}>
-            <Link href={`/category/${category.id}`}>
+            <Link href={`/${category.id}/page/1`}>
               <a>{category.name}</a>
             </Link>
           </li>
@@ -65,7 +65,7 @@ export const getServerSideProps = async () => {
   const categoryData = await client.get({ endpoint: "category" });
 
   //console.log(categoryData)
-  console.log(data.contents[0].tags[0].name)
+  //console.log(data.contents[0].tags[0].name)
 
   return {
     props: {

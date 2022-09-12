@@ -124,6 +124,7 @@ export const getStaticPaths = async () => {
 
   const paths = range(1, Math.ceil(repos.totalCount / PER_PAGE)).map((repo) => `/blog/page/${repo}`);
 
+  //console.log(paths)
 
   return { paths, fallback: false };
 };
@@ -134,6 +135,7 @@ export const getStaticProps = async (context:any) => {
 
   const data = await client.get({ endpoint: "blog", queries: { offset: (id - 1) * 5, limit: 5 } });
 
+  //console.log(data)
   return {
     props: {
       blog: data.contents,

@@ -3,6 +3,10 @@ import Link from "next/link";
 import { client } from "../../libs/client";
 import type { Blog } from '../../types/blog';
 import type { Category } from '../../types/category'
+import { Pagination } from '../../components/catepart';
+
+// 1ページごとに表示する記事の最大数
+const PER_PAGE = 5; 
 
 type Props = {
     blog: Array<Blog>;
@@ -11,7 +15,7 @@ type Props = {
   };
   
 
-export default function CategoryId({ blog }:Props) {
+export default function CategoryId({ blog,totalCount }:Props) {
   // カテゴリーに紐付いたコンテンツがない場合に表示
   if (blog.length === 0) {
     return <div>ブログコンテンツがありません</div>;
@@ -47,7 +51,9 @@ export default function CategoryId({ blog }:Props) {
           </div>
         ))}
       </div>
-      
+      <div className='text-center relative'>
+        <Pagination totalCount={totalCount} categoryid={blog[0].category.id}/>
+      </div>
     </div>
   );
 }
@@ -56,18 +62,25 @@ export default function CategoryId({ blog }:Props) {
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "category" });
 
+  const range = (start:number, end:number) => [...Array(end - start + 1)].map((_, i) => start + i);
+  const path = range(1, Math.ceil(data.totalCount / PER_PAGE)).map((repo) => `${repo}`);
+
   const paths = data.contents.map((content:any) => `/category/${content.id}`);
+
+  console.log(paths)
+  //console.log(`${paths}/${path}`)
   return { paths, fallback: false };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context:any) => {
   const id = context.params.id;
-  const data = await client.get({ endpoint: "blog", queries: { filters: `category[equals]${id}` } });
+  const data = await client.get({ endpoint: "blog", queries: { filters: `category[equals]${id}`, offset: (id - 1) * 5, limit: 5 } });
 
   return {
     props: {
       blog: data.contents,
+      totalCount: data.totalCount,
     },
   };
 };
