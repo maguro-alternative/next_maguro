@@ -1,9 +1,13 @@
 // pages/category/[id].js
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { client } from "../../../../../libs/client";
 import type { Blog } from '../../../../../types/blog';
 import type { Tag } from '../../../../../types/tag'
 import { Pagination } from '../../../../../components/tagpart';
+import Header from "../../../../../components/Header";
+
+const router = useRouter(); 
 
 // 1ページごとに表示する記事の最大数
 const PER_PAGE = 5; 
@@ -12,17 +16,26 @@ type Props = {
     blog: Array<Blog>;
     totalCount: number;
     tag: string;
+    name: string;
     //category: Array<Category>
 };
   
 
-export default function TagId({ blog,totalCount,tag }:Props) {
+export default function TagId({ blog,totalCount,tag,name }:Props) {
   // カテゴリーに紐付いたコンテンツがない場合に表示
   if (blog.length === 0) {
     return <div>ブログコンテンツがありません</div>;
   }
+  const titlename=`${name}のタグが付いた記事一覧`
   return (
     <div>
+      <Header title={titlename} 
+        description='DAAAAA' 
+        icon='' 
+        url={router.pathname} 
+        image='' 
+        twittercard=''
+      ></Header>
       <div className="container mx-auto p-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative z-2">
         {blog.map(article => (
           <div className="wrapper" key={article.id}>
@@ -103,16 +116,25 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context:any) => {
   //console.log(context)
   const id = context.params.tag;
-  //const catedata = await client.get({ endpoint: "category" });
+  const catedata = await client.get({ endpoint: "tag" });
   const data = await client.get({ endpoint: "blog", queries: { filters: `tags[contains]${id}`, offset: (id - 1) * 5, limit: 5 } });
 
-  //console.log(id)
+  let contentname
+  for(const content of catedata.contents){
+    //console.log(content.id)
+    //console.log(id)
+    if (content.id==id){
+      contentname=content.name;
+      break;
+    }
+  }
 
   return {
     props: {
       blog: data.contents,
       totalCount: data.totalCount,
       tag: id,
+      name: contentname,
     },
   };
 };

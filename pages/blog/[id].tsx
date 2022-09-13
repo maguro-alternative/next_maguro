@@ -3,6 +3,8 @@ import { GetServerSideProps , GetStaticProps} from 'next';
 import type { Blog } from '../../types/blog';
 import { client } from '../../libs/client';
 
+import Header from '../../components/Header'
+
 
 const PER_PAGE = 5; 
 
@@ -16,6 +18,13 @@ type Props = {
 export default function BlogPageId({ blog }:Props) {
   return (
     <div className="bg-gray-50">
+      <Header title={blog.title} 
+        description='DAAAAA' 
+        icon='' 
+        url='' 
+        image='' 
+        twittercard=''
+      ></Header>
       <div className="px-10 py-6 mx-auto ">
         <div className="max-w-6xl px-10 py-6 mx-auto bg-gray-50 relative z-2">
           <img

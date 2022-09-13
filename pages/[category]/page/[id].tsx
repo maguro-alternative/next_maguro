@@ -1,9 +1,13 @@
 // pages/category/[id].js
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { client } from "../../../libs/client";
 import type { Blog } from '../../../types/blog';
 import type { Category } from '../../../types/category'
 import { Pagination } from '../../../components/catepart';
+import Header from '../../../components/Header'
+
+const router = useRouter(); 
 
 // 1ページごとに表示する記事の最大数
 const PER_PAGE = 5; 
@@ -11,18 +15,27 @@ const PER_PAGE = 5;
 type Props = {
     blog: Array<Blog>;
     totalCount: number;
+    name: string;
     //category: Array<Category>
   };
   
 
-export default function CategoryId({ blog,totalCount }:Props) {
+export default function CategoryId({ blog,totalCount,name }:Props) {
   // カテゴリーに紐付いたコンテンツがない場合に表示
   //console.log(blog)
   if (blog.length === 0) {
     return <div>ブログコンテンツがありません</div>;
   }
+  const titlename=`${name}のカテゴリー記事一覧`
   return (
     <div>
+      <Header title={titlename} 
+        description='DAAAAA' 
+        icon='' 
+        url={router.pathname} 
+        image='' 
+        twittercard=''
+      ></Header>
       <div className="container mx-auto p-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative z-2">
         {blog.map(article => (
           <div className="wrapper" key={article.id}>
@@ -91,38 +104,30 @@ export const getStaticPaths = async () => {
 
   return { paths:p, fallback: false }
 
-  /*const range = (start:number, end:number) => [...Array(end - start + 1)].map((_, i) => start + i);
-  const path2 = range(1, Math.ceil(data.totalCount / PER_PAGE)).map((repo) => `${repo}`);
-
-  const path = data.contents.map((content:any) => `/category/${content.id}`);
-
-  const paths = data.contents.map((content:any) => 
-    (range(1, Math.ceil(data.totalCount / PER_PAGE)).map((repo) => 
-      `/${content.id}/page/${repo}`
-      )
-    )
-  );
-  const p = paths.map((content:any) => content)
-
-  console.log(typeof(paths))
-  console.log(paths)
-  console.log(typeof(path))
-  console.log(p)
-  return { paths, fallback: false };*/
+  
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context:any) => {
   const id = context.params.category;
-  //const catedata = await client.get({ endpoint: "category" });
+  const catedata = await client.get({ endpoint: "category" });
   const data = await client.get({ endpoint: "blog", queries: { filters: `category[equals]${id}`, offset: (id - 1) * 5, limit: 5 } });
 
-  //console.log(context)
+  let contentname
+  for(const content of catedata.contents){
+    //console.log(content.id)
+    //console.log(id)
+    if (content.id==id){
+      contentname=content.name;
+      break;
+    }
+  }
 
   return {
     props: {
       blog: data.contents,
       totalCount: data.totalCount,
+      name: contentname,
     },
   };
 };

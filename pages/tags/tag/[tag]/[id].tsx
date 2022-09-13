@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { client } from "../../../../libs/client";
 import type { Blog } from '../../../../types/blog';
-import type { Tag } from '../../../../types/tag'
+import Header from '../../../../components/Header'
 import { Pagination } from '../../../../components/tagpart';
 
 // 1ページごとに表示する記事の最大数
@@ -22,6 +22,13 @@ export default function TagId({ blog,totalCount,tag }:Props) {
   }
   return (
     <div>
+      <Header title='Devil May Cry' 
+        description='DAAAAA' 
+        icon='' 
+        url='' 
+        image='' 
+        twittercard=''
+      ></Header>
       <div className="container mx-auto p-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative z-2">
         {blog.map(article => (
           <div className="wrapper" key={article.id}>

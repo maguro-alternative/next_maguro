@@ -2,8 +2,12 @@ import { client } from '../libs/client';
 import type { Blog } from '../types/blog';
 import type { Category } from '../types/category';
 import type { Tag } from '../types/tag';
+import { useRouter } from "next/router";
 import Link from 'next/link';
 import Part from '../components/part'
+import Header from '../components/Header'
+
+//const router = useRouter(); 
 
 type Props = {
   blog: Array<Blog>;
@@ -17,6 +21,13 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
   //{tag.map((tag) => (console.log(tag)))}
   return (
     <>
+      <Header title='Devil May Cry' 
+        description='DAAAAA' 
+        icon='' 
+        url='' 
+        image='' 
+        twittercard=''
+      ></Header>
       <h1 className="container mx-auto text-white px-10 pt-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 relative z-2">
         記事一覧
       </h1>

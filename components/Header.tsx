@@ -2,15 +2,30 @@ import Link from 'next/link';
 import Head from 'next/head'
 import { useRouter } from "next/router";
 
-//const router = useRouter(); 
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  url: string;
+  image: string;
+  twittercard:string;
+}
 
-//console.log(router.pathname)
-
-export default function Header() {
+export default function Header({ title, description, icon, url, image, twittercard }: Props) {
   const router = useRouter();
   return (
     <header className="body-font z-2">
-      <title>Devil May Cry</title>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="icon" href="https://sigumataityouda.netlify.app/pic/zu3.png"></link>
+        <meta property="og:url" content="https://sigumataityouda.netlify.app/"></meta>
+        <meta property="og:image" content="https://sigumataityouda.netlify.app/pic/zu3.png" />
+        <meta property="og:type" content=" website" />
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="自分のTwitterのユーザー名" />
+      </Head>
       <script defer src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
       <script defer src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
       <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossOrigin="anonymous"></script>
