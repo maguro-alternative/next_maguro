@@ -64,7 +64,7 @@ export const getStaticPaths = async () => {
   const range = (start:number, end:number) => [...Array(end - start + 1)].map((_, i) => start + i);
   const path = range(1, Math.ceil(data.totalCount / PER_PAGE)).map((repo) => `${repo}`);
 
-  const paths = data.contents.map((content:any) => `/tag/${content.id}`);
+  const paths = data.contents.map((content:any) => `/tags/tag/${content.id}`);
 
   //console.log(data)
   //console.log(`${paths}/${path}`)
