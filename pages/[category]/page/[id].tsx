@@ -7,8 +7,8 @@ import type { Category } from '../../../types/category'
 import { Pagination } from '../../../components/catepart';
 import Header from '../../../components/Header'
 
-const router = useRouter(); 
-
+//const router = useRouter(); 
+//console.log(router)
 // 1ページごとに表示する記事の最大数
 const PER_PAGE = 5; 
 
@@ -32,7 +32,7 @@ export default function CategoryId({ blog,totalCount,name }:Props) {
       <Header title={titlename} 
         description='DAAAAA' 
         icon='' 
-        url={router.pathname} 
+        url='' 
         image='' 
         twittercard=''
       ></Header>

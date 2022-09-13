@@ -1,13 +1,13 @@
 // pages/category/[id].js
 import Link from "next/link";
-import { useRouter } from "next/router";
+//import { useRouter } from "next/router";
 import { client } from "../../../../../libs/client";
 import type { Blog } from '../../../../../types/blog';
 import type { Tag } from '../../../../../types/tag'
 import { Pagination } from '../../../../../components/tagpart';
 import Header from "../../../../../components/Header";
 
-const router = useRouter(); 
+//const router = useRouter(); 
 
 // 1ページごとに表示する記事の最大数
 const PER_PAGE = 5; 
@@ -32,7 +32,7 @@ export default function TagId({ blog,totalCount,tag,name }:Props) {
       <Header title={titlename} 
         description='DAAAAA' 
         icon='' 
-        url={router.pathname} 
+        url='' 
         image='' 
         twittercard=''
       ></Header>

@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import { useRouter } from "next/router";
+//import { useRouter } from "next/router";
 import type { Blog } from '../../../types/blog';
 import { client } from '../../../libs/client';
 import { Pagination } from '../../../components/part';
 import Header from '../../../components/Header';
 
-const router = useRouter(); 
+//const router = useRouter(); 
 
 // 1ページごとに表示する記事の最大数
 const PER_PAGE = 5; 
@@ -21,7 +21,7 @@ export default function BlogPageId({ blog, totalCount }:Props) {
       <Header title='Devil May Cry' 
         description='DAAAAA' 
         icon='' 
-        url={router.pathname} 
+        url='' 
         image='' 
         twittercard=''
       ></Header>
