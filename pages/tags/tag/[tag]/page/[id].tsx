@@ -1,9 +1,9 @@
 // pages/category/[id].js
 import Link from "next/link";
-import { client } from "../../../libs/client";
-import type { Blog } from '../../../types/blog';
-import type { Category } from '../../../types/category'
-import { Pagination } from '../../../components/catepart';
+import { client } from "../../../../../libs/client";
+import type { Blog } from '../../../../../types/blog';
+import type { Tag } from '../../../../../types/tag'
+import { Pagination } from '../../../../../components/tagpart';
 
 // 1ページごとに表示する記事の最大数
 const PER_PAGE = 5; 
@@ -12,12 +12,11 @@ type Props = {
     blog: Array<Blog>;
     totalCount: number;
     //category: Array<Category>
-  };
+};
   
 
 export default function CategoryId({ blog,totalCount }:Props) {
   // カテゴリーに紐付いたコンテンツがない場合に表示
-  //console.log(blog)
   if (blog.length === 0) {
     return <div>ブログコンテンツがありません</div>;
   }
@@ -53,7 +52,7 @@ export default function CategoryId({ blog,totalCount }:Props) {
         ))}
       </div>
       <div className='text-center relative'>
-        <Pagination totalCount={totalCount} categoryid={blog[0].category.id}/>
+        <Pagination totalCount={totalCount} tagid={blog[0].id}/>
       </div>
     </div>
   );
@@ -61,15 +60,19 @@ export default function CategoryId({ blog,totalCount }:Props) {
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {
-  const data = await client.get({ endpoint: "category" });
+  const data = await client.get({ endpoint: "tag" });
+
+  //console.log(data)
 
   const paths: string[] = await Promise.all(
-    data.contents.map((item: Category) => {
+    data.contents.map((item: Tag) => {
+      //console.log(item.id)
       const result = client
         .get({
           endpoint: 'blog',
           queries: {
-            filters: `category[equals]${item.id}`,
+            //filters: `tag[equals]${item.id}`,
+            filters: `tags[contains]${item.id}`,
           },
         })
         .then(({ totalCount }) => {
@@ -77,13 +80,14 @@ export const getStaticPaths = async () => {
             [...Array(end - start + 1)].map((_, i) => start + i)
 
           return range(1, Math.ceil(totalCount / PER_PAGE)).map(
-            (repo) => `/${item.id}/page/${repo}`
+            (repo) => `/tags/tag/${item.id}/page/${repo}`
           )
         })
         //console.log(result)
       return result
     })
   )
+  //console.log(paths)
   
   const p=paths.flat()
 
@@ -91,33 +95,17 @@ export const getStaticPaths = async () => {
 
   return { paths:p, fallback: false }
 
-  /*const range = (start:number, end:number) => [...Array(end - start + 1)].map((_, i) => start + i);
-  const path2 = range(1, Math.ceil(data.totalCount / PER_PAGE)).map((repo) => `${repo}`);
 
-  const path = data.contents.map((content:any) => `/category/${content.id}`);
-
-  const paths = data.contents.map((content:any) => 
-    (range(1, Math.ceil(data.totalCount / PER_PAGE)).map((repo) => 
-      `/${content.id}/page/${repo}`
-      )
-    )
-  );
-  const p = paths.map((content:any) => content)
-
-  console.log(typeof(paths))
-  console.log(paths)
-  console.log(typeof(path))
-  console.log(p)
-  return { paths, fallback: false };*/
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context:any) => {
-  const id = context.params.category;
-  //const catedata = await client.get({ endpoint: "category" });
-  const data = await client.get({ endpoint: "blog", queries: { filters: `category[equals]${id}`, offset: (id - 1) * 5, limit: 5 } });
-
   //console.log(context)
+  const id = context.params.tag;
+  //const catedata = await client.get({ endpoint: "category" });
+  const data = await client.get({ endpoint: "blog", queries: { filters: `tags[contains]${id}`, offset: (id - 1) * 5, limit: 5 } });
+
+  //console.log(data)
 
   return {
     props: {

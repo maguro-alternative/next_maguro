@@ -1,21 +1,34 @@
 import { client } from '../libs/client';
 import type { Blog } from '../types/blog';
 import type { Category } from '../types/category';
+import type { Tag } from '../types/tag';
 import Link from 'next/link';
 import Part from '../components/part'
 
 type Props = {
   blog: Array<Blog>;
   totalCount: number;
-  category:Array<Category>
+  category:Array<Category>;
+  tag:Array<Tag>;
 };
 
-export default function Home({ blog,totalCount,category }: Props) {
+export default function Home({ blog,totalCount,category,tag }: Props) {
+  //console.log(tag.flat())
+  //{tag.map((tag) => (console.log(tag)))}
   return (
     <>
       <h1 className="container mx-auto text-white px-10 pt-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 relative z-2">
         記事一覧
       </h1>
+      <ul>
+        {tag.map((tag) => (
+          <li className='text-white relative z-2' key={tag.id}>
+            <Link href={`/tags/tag/${tag.id}/page/1`}>
+              <a>{tag.name}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
       <ul>
         {category.map((category) => (
           <li className='text-white relative z-2' key={category.id}>
@@ -63,15 +76,17 @@ export default function Home({ blog,totalCount,category }: Props) {
 export const getServerSideProps = async () => {
   const data = await client.get({ endpoint: 'blog' ,queries: {  offset: 0, limit: 5 } });
   const categoryData = await client.get({ endpoint: "category" });
+  const tagData = await client.get({ endpoint: "tag" });
 
-  //console.log(categoryData)
+  //console.log(tagData)
   //console.log(data.contents[0].tags[0].name)
 
   return {
     props: {
       blog: data.contents,
       category: categoryData.contents,
-      totalCount: data.totalCount
+      totalCount: data.totalCount,
+      tag: tagData.contents
     },
     //category: categoryData.contents,
   };
