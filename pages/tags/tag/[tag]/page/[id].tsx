@@ -93,7 +93,7 @@ export const getStaticPaths = async () => {
 
   //console.log(p)
 
-  return { paths:p, fallback: false }
+  return { paths:p, fallback: true }
 
 
 };
