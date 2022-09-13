@@ -2,7 +2,6 @@ import { client } from '../libs/client';
 import type { Blog } from '../types/blog';
 import type { Category } from '../types/category';
 import type { Tag } from '../types/tag';
-import { useRouter } from "next/router";
 import Link from 'next/link';
 import Part from '../components/part'
 import Header from '../components/Header'
