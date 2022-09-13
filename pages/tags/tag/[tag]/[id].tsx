@@ -10,11 +10,12 @@ const PER_PAGE = 5;
 type Props = {
     blog: Array<Blog>;
     totalCount: number;
+    tag: string;
     //category: Array<Category>
   };
   
 
-export default function TagId({ blog,totalCount }:Props) {
+export default function TagId({ blog,totalCount,tag }:Props) {
   // カテゴリーに紐付いたコンテンツがない場合に表示
   if (blog.length === 0) {
     return <div>ブログコンテンツがありません</div>;
@@ -51,7 +52,7 @@ export default function TagId({ blog,totalCount }:Props) {
         ))}
       </div>
       <div className='text-center relative'>
-        <Pagination totalCount={totalCount} tagid={blog[0].id}/>
+        <Pagination totalCount={totalCount} tagid={tag}/>
       </div>
     </div>
   );
@@ -64,10 +65,10 @@ export const getStaticPaths = async () => {
   const range = (start:number, end:number) => [...Array(end - start + 1)].map((_, i) => start + i);
   const path = range(1, Math.ceil(data.totalCount / PER_PAGE)).map((repo) => `${repo}`);
 
-  const paths = data.contents.map((content:any) => `/tags/tag/${content.id}`);
+  const paths = data.contents.map((content:any) => `/tags/${content.id}`);
 
   console.log(data)
-  //console.log(`${paths}/${path}`)
+  console.log(`${paths}`)
   return { paths, fallback: false };
 };
 
@@ -77,12 +78,13 @@ export const getStaticProps = async (context:any) => {
   const data = await client.get({ endpoint: "blog", queries: { filters: `tags[contains]${id}`, offset: (id - 1) * 5, limit: 5 } });
 
   //console.log(context)
-  console.log(data)
+  //console.log(data)
 
   return {
     props: {
       blog: data.contents,
       totalCount: data.totalCount,
+      tag: id,
     },
   };
 };
