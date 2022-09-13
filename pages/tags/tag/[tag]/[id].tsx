@@ -1,9 +1,8 @@
-// pages/category/[id].js
 import Link from "next/link";
-import { client } from "../../../../../libs/client";
-import type { Blog } from '../../../../../types/blog';
-import type { Tag } from '../../../../../types/tag'
-import { Pagination } from '../../../../../components/tagpart';
+import { client } from "../../../../libs/client";
+import type { Blog } from '../../../../types/blog';
+import type { Tag } from '../../../../types/tag'
+import { Pagination } from '../../../../components/tagpart';
 
 // 1ページごとに表示する記事の最大数
 const PER_PAGE = 5; 
@@ -12,7 +11,7 @@ type Props = {
     blog: Array<Blog>;
     totalCount: number;
     //category: Array<Category>
-};
+  };
   
 
 export default function TagId({ blog,totalCount }:Props) {
@@ -62,50 +61,23 @@ export default function TagId({ blog,totalCount }:Props) {
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "tag" });
 
-  //console.log(data)
+  const range = (start:number, end:number) => [...Array(end - start + 1)].map((_, i) => start + i);
+  const path = range(1, Math.ceil(data.totalCount / PER_PAGE)).map((repo) => `${repo}`);
 
-  const paths: string[] = await Promise.all(
-    data.contents.map((item: Tag) => {
-      //console.log(item.id)
-      const result = client
-        .get({
-          endpoint: 'blog',
-          queries: {
-            //filters: `tag[equals]${item.id}`,
-            filters: `tags[contains]${item.id}`,
-          },
-        })
-        .then(({ totalCount }) => {
-          const range = (start: number, end: number) =>
-            [...Array(end - start + 1)].map((_, i) => start + i)
+  const paths = data.contents.map((content:any) => `/tags/tag/${content.id}/`);
 
-          return range(1, Math.ceil(totalCount / PER_PAGE)).map(
-            (repo) => `/tags/tag/${item.id}/page/${repo}`
-          )
-        })
-        //console.log(result)
-      return result
-    })
-  )
-  //console.log(paths)
-  
-  const p=paths.flat()
-
-  //console.log(p)
-
-  return { paths:p, fallback: true }
-
-
+  console.log(data)
+  //console.log(`${paths}/${path}`)
+  return { paths, fallback: false };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context:any) => {
-  //console.log(context)
   const id = context.params.tag;
-  //const catedata = await client.get({ endpoint: "category" });
   const data = await client.get({ endpoint: "blog", queries: { filters: `tags[contains]${id}`, offset: (id - 1) * 5, limit: 5 } });
 
-  //console.log(data)
+  //console.log(context)
+  console.log(data)
 
   return {
     props: {
