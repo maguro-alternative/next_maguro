@@ -68,7 +68,7 @@ export const getStaticPaths = async () => {
 
   //console.log(data)
   //console.log(`${paths}/${path}`)
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
