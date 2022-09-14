@@ -13,14 +13,15 @@ interface Props {
 
 export default function Header({ title, description, icon, url, image, twittercard }: Props) {
   const router = useRouter();
+  const asurl=`https://next-magurotaityouda.netlify.app${url}`
   return (
     <header className="body-font z-2">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <link rel="icon" href="https://sigumataityouda.netlify.app/pic/zu3.png"></link>
-        <meta property="og:url" content="https://sigumataityouda.netlify.app/"></meta>
-        <meta property="og:image" content="https://sigumataityouda.netlify.app/pic/zu3.png" />
+        <link rel="icon" href={icon}></link>
+        <meta property="og:url" content={asurl}></meta>
+        <meta property="og:image" content={image} />
         <meta property="og:type" content=" website" />
         <meta property="og:locale" content="ja_JP" />
         <meta name="twitter:card" content="summary_large_image" />

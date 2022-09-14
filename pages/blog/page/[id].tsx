@@ -1,11 +1,10 @@
 import Link from 'next/link';
-//import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import type { Blog } from '../../../types/blog';
 import { client } from '../../../libs/client';
 import { Pagination } from '../../../components/part';
 import Header from '../../../components/Header';
 
-//const router = useRouter(); 
 
 // 1ページごとに表示する記事の最大数
 const PER_PAGE = 5; 
@@ -16,13 +15,15 @@ type Props = {
 };
 // blog/page/{number}
 export default function BlogPageId({ blog, totalCount }:Props) {
+  const router = useRouter(); 
+  const titlename=`記事一覧 ${router.query.id}ページ目`
   return (
     <>
-      <Header title='Devil May Cry' 
+      <Header title={titlename} 
         description='DAAAAA' 
-        icon='' 
-        url='' 
-        image='' 
+        icon='/zu3.png' 
+        url={router.asPath} 
+        image='/zu3.png' 
         twittercard=''
       ></Header>
       <div className="container mx-auto p-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative z-2">
@@ -59,66 +60,6 @@ export default function BlogPageId({ blog, totalCount }:Props) {
       </div>
     </>
   );
-  /*
-  <div className="container mx-auto p-1 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative z-2">
-        {blog.map(article => (
-          <div className="wrapper" key={article.id}>
-            <div className="mainbar">
-              <div className="textback">
-                <div className="rounded overflow-hidden shadow-lg relative z-2">
-                  <img
-                    className="w-full relative"
-                    src={article.eye_catch.url}
-                    alt="Sunset in the mountains"
-                  />
-                  <div className="px-6 py-4 relative">
-                    <Link href={`/blog/${article.id}`} passHref>
-                      <a>{article.title}</a>
-                    </Link>
-                  </div>
-                  <div className="px-6 pt-4 pb-2 relative">
-                    {article.tag && (
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                        #{article.tag}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className='text-center relative'>
-        <Part totalCount={totalCount} />
-      </div>
-  */
-  /*
-  return (
-    <div className="container mx-auto p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative z-2">
-      <ul>
-        {blog.map(blog => (
-          <div className="wrapper">
-            <div className="mainbar">
-              <div className="textback">
-                <li key={blog.id}>
-                  <img
-                    className="object-cover w-full shadow-sm h-full"
-                    src={blog.eye_catch.url}
-                  />
-                  <Link href={`/blog/${blog.id}`}>
-                    <a>{blog.title}</a>
-                  </Link>
-                </li>
-              </div>
-            </div>
-          </div>
-        ))}
-      </ul>
-      <Pagination totalCount={totalCount} />
-    </div>
-  );
-  */
 }
 
 // 動的なページを作成

@@ -2,6 +2,7 @@ import { GetServerSideProps , GetStaticProps} from 'next';
 
 import type { Blog } from '../../types/blog';
 import { client } from '../../libs/client';
+import { useRouter } from "next/router";
 
 import Header from '../../components/Header'
 
@@ -16,13 +17,14 @@ type Props = {
 //microcmsのhtml展開
 
 export default function BlogPageId({ blog }:Props) {
+  const router = useRouter();
   return (
     <div className="bg-gray-50">
       <Header title={blog.title} 
         description='DAAAAA' 
         icon='' 
-        url='' 
-        image='' 
+        url={router.asPath} 
+        image={blog.eye_catch.url} 
         twittercard=''
       ></Header>
       <div className="px-10 py-6 mx-auto ">

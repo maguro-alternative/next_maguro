@@ -22,9 +22,9 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
     <>
       <Header title='Devil May Cry' 
         description='DAAAAA' 
-        icon='' 
-        url='' 
-        image='' 
+        icon='/zu3.png' 
+        url='/' 
+        image='/zu3.png' 
         twittercard=''
       ></Header>
       <h1 className="container mx-auto text-white px-10 pt-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 relative z-2">

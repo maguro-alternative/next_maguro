@@ -21,19 +21,20 @@ type Props = {
   
 
 export default function CategoryId({ blog,totalCount,name }:Props) {
+  const router = useRouter(); 
   // カテゴリーに紐付いたコンテンツがない場合に表示
-  //console.log(blog)
+  //console.log(router.query.id)
   if (blog.length === 0) {
     return <div>ブログコンテンツがありません</div>;
   }
-  const titlename=`${name}のカテゴリー記事一覧`
+  const titlename=`${name}のカテゴリー記事一覧 ${router.query.id}ページ目`
   return (
     <div>
       <Header title={titlename} 
         description='DAAAAA' 
-        icon='' 
-        url='' 
-        image='' 
+        icon='/zu3.png' 
+        url={router.asPath} 
+        image='/zu3.png' 
         twittercard=''
       ></Header>
       <div className="container mx-auto p-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative z-2">

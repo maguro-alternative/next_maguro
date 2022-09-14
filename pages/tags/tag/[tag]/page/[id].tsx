@@ -1,13 +1,13 @@
 // pages/category/[id].js
 import Link from "next/link";
-//import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { client } from "../../../../../libs/client";
 import type { Blog } from '../../../../../types/blog';
 import type { Tag } from '../../../../../types/tag'
 import { Pagination } from '../../../../../components/tagpart';
 import Header from "../../../../../components/Header";
 
-//const router = useRouter(); 
+
 
 // 1ページごとに表示する記事の最大数
 const PER_PAGE = 5; 
@@ -23,17 +23,18 @@ type Props = {
 
 export default function TagId({ blog,totalCount,tag,name }:Props) {
   // カテゴリーに紐付いたコンテンツがない場合に表示
+  const router = useRouter(); 
   if (blog.length === 0) {
     return <div>ブログコンテンツがありません</div>;
   }
-  const titlename=`${name}のタグが付いた記事一覧`
+  const titlename=`${name}のタグが付いた記事一覧 ${router.query.id}ページ目`
   return (
     <div>
       <Header title={titlename} 
         description='DAAAAA' 
-        icon='' 
-        url='' 
-        image='' 
+        icon='/zu3.png' 
+        url={router.asPath} 
+        image='/zu3.png' 
         twittercard=''
       ></Header>
       <div className="container mx-auto p-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative z-2">
