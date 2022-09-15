@@ -1,4 +1,5 @@
 import { GetServerSideProps , GetStaticProps} from 'next';
+import Link from 'next/link';
 
 import type { Blog } from '../../types/blog';
 import { client } from '../../libs/client';
@@ -42,13 +43,28 @@ export default function BlogPageId({ blog }:Props) {
             作成日時 {blog.createdAt}<br/>
             最終更新 {blog.updatedAt}
           </div>
-          {blog.tags && blog.tags.map( blog => (
-            <div className="flex items-center justify-start mt-4 mb-4">
-              <div className="px-3 py-1 font-bold bg-red-400 text-white rounded-lg">
-                #{blog.name}
-              </div>
+          {blog.category &&
+            <div className="px-6 pt-4 pb-2 relative">
+              <a>カテゴリー</a><br/>
+                <Link href={`/${blog.category.id}/page/1`} passHref>
+                  <a className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                    {blog.category.name}
+                  </a>
+                </Link>
             </div>
-          ))}
+          }
+          <div className="px-6 pt-4 pb-2 relative">
+            <a>タグ</a><br/>
+            {blog.tags && blog.tags.map( blog => (
+              <Link href={`/tags/tag/${blog.id}/page/1`} passHref>
+                <div className="flex items-center justify-start mt-4 mb-4">
+                  <div className="px-3 py-1 font-bold bg-red-400 text-white rounded-lg">
+                    #{blog.name}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
           <div className="mt-2">
             <div className="text-lg text-gray-700 mt-4 rounded ">
               <div
