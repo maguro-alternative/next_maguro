@@ -22,7 +22,7 @@ export default function BlogPageId({ blog }:Props) {
     <div className="bg-gray-50">
       <Header title={blog.title} 
         description='DAAAAA' 
-        icon='' 
+        icon='/zu3.png' 
         url={router.asPath} 
         image={blog.eye_catch.url} 
         twittercard=''
@@ -37,6 +37,10 @@ export default function BlogPageId({ blog }:Props) {
             <div className="sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-blue-500">
               {blog.title}
             </div>
+          </div>
+          <div className="px-3 pt-2 pb-1 text-sm relative">
+            作成日時 {blog.createdAt}<br/>
+            最終更新 {blog.updatedAt}
           </div>
           {blog.tags && blog.tags.map( blog => (
             <div className="flex items-center justify-start mt-4 mb-4">

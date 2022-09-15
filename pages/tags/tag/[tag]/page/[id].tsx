@@ -37,6 +37,9 @@ export default function TagId({ blog,totalCount,tag,name }:Props) {
         image='/zu3.png' 
         twittercard=''
       ></Header>
+      <h1 className="container mx-auto text-white px-10 pt-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 relative z-2">
+        {titlename}
+      </h1>
       <div className="container mx-auto p-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative z-2">
         {blog.map(article => (
           <div className="wrapper" key={article.id}>
@@ -53,12 +56,29 @@ export default function TagId({ blog,totalCount,tag,name }:Props) {
                       <a>{article.title}</a>
                     </Link>
                   </div>
+                  {article.category &&
+                    <div className="px-6 pt-4 pb-2 relative">
+                      <a>カテゴリー</a><br/>
+                      <Link href={`/${article.category.id}/page/1`} passHref>
+                        <a className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                          {article.category.name}
+                        </a>
+                      </Link>
+                    </div>
+                  }
                   <div className="px-6 pt-4 pb-2 relative">
+                    <a>タグ</a><br/>
                     {article.tags && article.tags.map(article => (
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                        #{article.name}
-                      </span>
+                      <Link href={`/tags/tag/${article.id}/page/1`} passHref>
+                        <a className="inline-block bg-red-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                          #{article.name}
+                        </a>
+                      </Link>
                     ))}
+                  </div>
+                  <div className="px-3 pt-2 pb-1 text-sm relative">
+                    作成日時 {article.createdAt}<br/>
+                    最終更新 {article.updatedAt}
                   </div>
                 </div>
               </div>

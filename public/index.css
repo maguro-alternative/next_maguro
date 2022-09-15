@@ -328,7 +328,7 @@ ul li:hover{
 	/*iphone*/
 	.container {
 		/*max-width: 480px;*/
-		margin: 0 5%;
+		margin: 0 0%;
 	}
 	.textback {
 		background: #fff;
@@ -351,12 +351,12 @@ ul li:hover{
 		/*flex-wrap: nowrap;*/
 	}
 	.global-nav {
-		font-size: 14px;
+		font-size: 12px;
 		background-color: #eff;
 		position: fixed;
 		z-index: 2;
-		width: 280px;
-		/*margin-left: 10%;*/
+		width: 320px;
+		margin-left: 7%;
 	}
 	ul.nav-list{
 		display: table;
