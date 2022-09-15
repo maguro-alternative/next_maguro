@@ -27,8 +27,8 @@ export default function BlogPageId({ blog }:Props) {
         image={blog.eye_catch.url} 
         twittercard=''
       ></Header>
-      <div className="px-10 py-6 mx-auto ">
-        <div className="max-w-6xl px-10 py-6 mx-auto bg-gray-50 relative z-2">
+      <div className="px-1 py-6 mx-auto ">
+        <div className="max-w-6xl px-7 py-10 mx-auto bg-gray-50 relative z-2">
           <img
             className="object-cover w-full shadow-sm h-full"
             src={blog.eye_catch.url}
@@ -44,13 +44,13 @@ export default function BlogPageId({ blog }:Props) {
           </div>
           {blog.tags && blog.tags.map( blog => (
             <div className="flex items-center justify-start mt-4 mb-4">
-              <div className="px-2 py-1 font-bold bg-red-400 text-white rounded-lg">
+              <div className="px-3 py-1 font-bold bg-red-400 text-white rounded-lg">
                 #{blog.name}
               </div>
             </div>
           ))}
           <div className="mt-2">
-            <div className="text-2xl text-gray-700 mt-4 rounded ">
+            <div className="text-lg text-gray-700 mt-4 rounded ">
               <div
                 dangerouslySetInnerHTML={{
                   __html: `${blog.body}`,
