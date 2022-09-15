@@ -22,7 +22,7 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
   //{tag.map((tag) => (console.log(tag)))}
   return (
     <>
-      <Header title='Devil May Cry' 
+      <Header title='マグロポートフォリオ用トップページ' 
         description='DAAAAA' 
         icon='/zu3.png' 
         url='/' 
