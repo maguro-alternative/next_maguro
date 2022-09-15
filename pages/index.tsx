@@ -5,7 +5,7 @@ import type { Tag } from '../types/tag';
 import Link from 'next/link';
 import Part from '../components/part'
 import Header from '../components/Header'
-import TagHeader from '../components/tagHeader'
+
 
 
 //const router = useRouter(); 
@@ -81,7 +81,6 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
       <div className='text-center relative'>
         <Part totalCount={totalCount} />
       </div>
-      <TagHeader category={category} tag={tag}/>
     </>
   );
 }    
