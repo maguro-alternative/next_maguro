@@ -22,20 +22,13 @@
 	mix-blend-mode: hard-light;
 }
 
-#ifover {
-	top: 0;
-	left: 0;
-	min-height:100%;
-	min-width:100%;
-	width: 100%;
-	z-index: -1;
-	/*min-width:100vw;
-	min-height:100vh;*/
-	overflow-x: hidden;
-	overflow-y: hidden;
-	position: absolute;
-	/*position: fixed;*/
-	mix-blend-mode: hard-light;
+code {
+	display: inline-block;
+	padding: 0.1em 0.25em; /* 文字周りの余白 */
+	color: #444; /* 文字色 */
+	background-color: #e7edf3; /* 背景色 */
+	border-radius: 3px; /* 角丸 */
+	border: solid 1px #d6dde4; /* 枠線 */
 }
 
 #bg {
