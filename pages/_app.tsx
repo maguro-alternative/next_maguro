@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <div id="bg"></div>
         <canvas id="canvasOverlay"></canvas>
         <Component {...pageProps} />
-        <iframe className="disgetbot" src="https://discord.com/widget?id=838937935822585928&theme=dark" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <iframe className="disgetbot max-w-4xl px-7 py-10 mx-auto" src="https://discord.com/widget?id=838937935822585928&theme=dark" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
       </div>
     </>
   );
