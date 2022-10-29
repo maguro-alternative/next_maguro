@@ -61,7 +61,7 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
                   <div className="px-6 pt-4 pb-2 relative">
                     <a>タグ</a><br/>
                     {article.tags && article.tags.map(article => (
-                      <Link href={`/tags/tag/${article.id}/page/1`} passHref>
+                      <Link href={`/tags/tag/${article.id}/page/1`} passHref key="">
                         <a className="inline-block bg-red-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                           #{article.name}
                         </a>
