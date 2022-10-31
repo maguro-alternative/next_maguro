@@ -16,6 +16,12 @@ export default function Header({ title, description, icon, url, image, twitterca
   const asurl=`https://next-magurotaityouda.netlify.app${url}`
   return (
     <header className="body-font z-2">
+      <script defer src="//code.createjs.com/1.0.0/createjs.min.js"></script>
+      <script defer src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
+      <script src="//code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossOrigin="anonymous"></script>
+      <script defer src="/sls.js"></script>
+      <script defer src="/ws.js"></script>
+      <script defer src="/4saw.js"></script>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -27,12 +33,6 @@ export default function Header({ title, description, icon, url, image, twitterca
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="自分のTwitterのユーザー名" />
       </Head>
-      <script defer src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
-      <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossOrigin="anonymous"></script>
-      <script defer src="/sls.js"></script>
-      <script defer src="/ws.js"></script>
-      <script defer src="/4saw.js"></script>
       <div className="container">
         <header>
           <nav className="global-nav">

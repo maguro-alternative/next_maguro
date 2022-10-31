@@ -40,13 +40,13 @@ export default function BlogPageId({ blog, totalCount }:Props) {
                     src={article.eye_catch.url}
                     alt="Sunset in the mountains"
                   />
-                  <div className="sm:px-2 py-1 relative text-1 xl:px-6 py-4 relative">
+                  <div className="sm:px-2 sm:py-1 text-1 xl:px-6 xl:py-4 relative">
                     <Link href={`/blog/${article.id}`} passHref>
                       <a>{article.title}</a>
                     </Link>
                   </div>
                   {article.category &&
-                    <div className="sm:px-0 pt-0 relative text-1 xl:px-6 pt-4 relative">
+                    <div className="sm:px-0 sm:pt-0 text-1 xl:px-6 xl:pt-4 relative">
                       <a>カテゴリー</a><br/>
                       <Link href={`/${article.category.id}/page/1`} passHref>
                         <a className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
@@ -55,7 +55,7 @@ export default function BlogPageId({ blog, totalCount }:Props) {
                       </Link>
                     </div>
                   }
-                  <div className="sm:px-0 pt-0 pb-1 text-1 xl:px-6 pt-4 pb-2 relative">
+                  <div className="sm:px-0 sm:pt-0 text-1 xl:px-6 xl:pt-4 relative">
                     <a>タグ</a><br/>
                     {article.tags && article.tags.map(article => (
                       <Link href={`/tags/tag/${article.id}/page/1`} passHref key="">
@@ -65,7 +65,7 @@ export default function BlogPageId({ blog, totalCount }:Props) {
                       </Link>
                     ))}
                   </div>
-                  <div className="sm:px-0 py-1 pb-1 text-1 xl:px-3 pt-2 pb-1 text-sm relative">
+                  <div className="sm:px-0 sm:py-1 sm:pb-1 text-1 xl:px-3 xl:pt-2 xl:pb-1 text-sm relative">
                     作成日時 {article.createdAt}<br/>
                     最終更新 {article.updatedAt}
                   </div>
