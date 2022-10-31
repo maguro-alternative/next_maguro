@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Part from '../components/part'
 import Header from '../components/Header'
 
-
+import Dayjs from 'dayjs'
 
 //const router = useRouter(); 
 
@@ -69,8 +69,8 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
                     ))}
                   </div>
                   <div className="sm:px-0 sm:py-1 sm:pb-1 text-1 xl:px-3 xl:pt-2 xl:pb-1 text-sm relative">
-                    作成日時 {article.createdAt}<br/>
-                    最終更新 {article.updatedAt}
+                    作成日時 {Dayjs(new Date(article.createdAt)).format('YYYY-MM-DD')}<br/>
+                    最終更新 {Dayjs(new Date(article.updatedAt)).format('YYYY-MM-DD')}
                   </div>
                 </div>
               </div>

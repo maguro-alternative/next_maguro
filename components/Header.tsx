@@ -18,7 +18,7 @@ export default function Header({ title, description, icon, url, image, twitterca
     <header className="body-font z-2">
       <script defer src="//code.createjs.com/1.0.0/createjs.min.js"></script>
       <script defer src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
-      <script src="//code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossOrigin="anonymous"></script>
+      <script defer src="//code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossOrigin="anonymous"></script>
       <script defer src="/sls.js"></script>
       <script defer src="/ws.js"></script>
       <script defer src="/4saw.js"></script>
