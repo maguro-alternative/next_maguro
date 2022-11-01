@@ -9,6 +9,8 @@ import { useRouter } from "next/router";
 import Header from '../../components/Header'
 import { JSDOM } from 'jsdom'
 
+import Dayjs from 'dayjs'
+
 
 const PER_PAGE = 5; 
 
@@ -58,9 +60,9 @@ export default function BlogPageId({ blog,toc }:Props) {
               {blog.title}
             </div>
           </div>
-          <div className="px-3 pt-2 pb-1 text-sm relative">
-            作成日時 {blog.createdAt}<br/>
-            最終更新 {blog.updatedAt}
+          <div className="sm:px-0 sm:py-1 sm:pb-1 text-1 xl:px-3 xl:pt-2 xl:pb-1 text-sm relative">
+            作成日時 {Dayjs(new Date(blog.createdAt)).format('YYYY-MM-DD')}<br/>
+            最終更新 {Dayjs(new Date(blog.updatedAt)).format('YYYY-MM-DD')}
           </div>
           {blog.category &&
             <div className="px-6 pt-4 pb-2 relative">
@@ -75,7 +77,7 @@ export default function BlogPageId({ blog,toc }:Props) {
           <div className="px-6 pt-4 pb-2 relative">
             <a>タグ</a><br/>
             {blog.tags && blog.tags.map( blog => (
-              <Link href={`/tags/tag/${blog.id}/page/1`} passHref>
+              <Link href={`/tags/tag/${blog.id}/page/1`} passHref key={blog.id}>
                 <div className="flex items-center justify-start mt-4 mb-4">
                   <div className="px-3 py-1 font-bold bg-red-400 text-white rounded-lg">
                     #{blog.name}
@@ -85,7 +87,7 @@ export default function BlogPageId({ blog,toc }:Props) {
             ))}
           </div>
           <div className="mt-2">
-            <div className="text-lg text-gray-700 mt-4 rounded ">
+            <div className="gap-y-2 text-lg p-1 text-gray-700 mt-4 rounded ">
               <div
                 dangerouslySetInnerHTML={{
                   __html: `${blog.body}`,

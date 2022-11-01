@@ -1,3 +1,4 @@
+//このページは表示されません。
 // pages/category/[id].js
 import Link from "next/link";
 import { client } from "../../libs/client";

@@ -1,3 +1,5 @@
+//このページは表示されません。
+
 import Link from "next/link";
 import { client } from "../../../../libs/client";
 import type { Blog } from '../../../../types/blog';
