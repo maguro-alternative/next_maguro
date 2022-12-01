@@ -1,7 +1,7 @@
 import { GetServerSideProps , GetStaticProps} from 'next';
 import Link from 'next/link';
 
-import Image from 'next/image'
+import MicroCMSImage from '../../components/microcmsimage'
 
 import type { Blog } from '../../types/blog';
 import { client } from '../../libs/client';
@@ -52,9 +52,10 @@ export default function BlogPageId({ blog,toc }:Props) {
       </div>
       <div className="px-1 py-6 mx-auto ">
         <div className="max-w-4xl px-7 py-10 mx-auto bg-gray-50 relative z-2">
-          <Image
-            className="object-cover w-full shadow-sm h-full"
+          <MicroCMSImage
             src={blog.eye_catch.url}
+            width={blog.eye_catch.width}
+            height={blog.eye_catch.height}
           />
           <div className="mt-2">
             <div className="sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-blue-500">

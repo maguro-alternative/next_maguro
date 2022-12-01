@@ -1,6 +1,6 @@
 // pages/category/[id].js
 import Link from "next/link";
-import Image from 'next/image'
+import MicroCMSImage from '../../../components/microcmsimage'
 import { useRouter } from "next/router";
 import { client } from "../../../libs/client";
 import type { Blog } from '../../../types/blog';
@@ -49,10 +49,10 @@ export default function CategoryId({ blog,totalCount,name }:Props) {
             <div className="mainbar">
               <div className="textback">
                 <div className="rounded overflow-hidden shadow-lg relative z-2">
-                  <Image
-                    className="w-full relative"
+                  <MicroCMSImage
                     src={article.eye_catch.url}
-                    alt="Sunset in the mountains"
+                    width={article.eye_catch.width}
+                    height={article.eye_catch.height}
                   />
                   <div className="sm:px-2 sm:py-1 text-1 xl:px-6 xl:py-4 relative">
                     <Link href={`/blog/${article.id}`} passHref>

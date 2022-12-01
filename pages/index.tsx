@@ -4,8 +4,7 @@ import type { Category } from '../types/category';
 import type { Tag } from '../types/tag';
 import Link from 'next/link';
 import MicroCMSImage from '../components/microcmsimage'
-import Image from 'next/image'
-import Part from '../components/part'
+
 import Header from '../components/Header'
 
 import Dayjs from 'dayjs'
