@@ -3,6 +3,7 @@ import type { Blog } from '../types/blog';
 import type { Category } from '../types/category';
 import type { Tag } from '../types/tag';
 import Link from 'next/link';
+import MicroCMSImage from '../components/microcmsimage'
 import Image from 'next/image'
 import Part from '../components/part'
 import Header from '../components/Header'
@@ -39,10 +40,10 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
             <div className="mainbar">
               <div className="textback">
                 <div className="rounded overflow-hidden shadow-lg relative z-2">
-                  <img
-                    className="w-full relative"
+                  <MicroCMSImage
                     src={article.eye_catch.url}
-                    alt="Sunset in the mountains"
+                    width={article.eye_catch.width}
+                    height={article.eye_catch.height}
                   />
                   <div className="sm:px-2 sm:py-1 text-1 xl:px-6 xl:py-4 relative">
                     <Link href={`/blog/${article.id}`} passHref>
