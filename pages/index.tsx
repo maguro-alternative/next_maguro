@@ -30,7 +30,7 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
         twittercard=''
       ></Header>
       <h1 className="text-1 px-5 pt-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 relative z-2 container mx-auto text-white xl:px-10 xl:pt-20 grid grid-cols-1">
-        最新記事一覧
+        最新記事
       </h1>
       <div className="sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative z-2 xl:container mx-auto p-1 grid grid-cols-1">
         {blog.map(article => (
@@ -48,26 +48,6 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
                       <a>{article.title}</a>
                     </Link>
                   </div>
-                  {article.category &&
-                    <div className="sm:px-0 sm:pt-0 text-1 xl:px-6 xl:pt-4 relative">
-                      <a>カテゴリー</a><br/>
-                      <Link href={`/${article.category.id}/page/1`} passHref>
-                        <a className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                          {article.category.name}
-                        </a>
-                      </Link>
-                    </div>
-                  }
-                  <div className="sm:px-0 sm:pt-0 text-1 xl:px-6 xl:pt-4 relative">
-                    <a>タグ</a><br/>
-                    {article.tags && article.tags.map(article => (
-                      <Link href={`/tags/tag/${article.id}/page/1`} passHref key="">
-                        <a className="inline-block bg-red-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                          #{article.name}
-                        </a>
-                      </Link>
-                    ))}
-                  </div>
                   <div className="sm:px-0 sm:py-1 sm:pb-1 text-1 xl:px-3 xl:pt-2 xl:pb-1 text-sm relative">
                     作成日時 {Dayjs(new Date(article.createdAt)).format('YYYY-MM-DD')}<br/>
                     最終更新 {Dayjs(new Date(article.updatedAt)).format('YYYY-MM-DD')}
@@ -78,16 +58,14 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
           </div>
         ))}
       </div>
-      <div className='text-center relative'>
-        <Part totalCount={totalCount} />
-      </div>
+      
     </>
   );
 }    
 export const getServerSideProps = async () => {
-  const data = await client.get({ endpoint: 'blog' ,queries: {  offset: 0, limit: 5 } });
-  const categoryData = await client.get({ endpoint: "category" });
-  const tagData = await client.get({ endpoint: "tag" });
+  const data = await client.get({ endpoint: 'blog' ,queries: {  offset: 0, limit: 3 } });
+  //const categoryData = await client.get({ endpoint: "category" });
+  //const tagData = await client.get({ endpoint: "tag" });
 
   //console.log(tagData)
   //console.log(data.contents[0].tags[0].name)
@@ -95,9 +73,9 @@ export const getServerSideProps = async () => {
   return {
     props: {
       blog: data.contents,
-      category: categoryData.contents,
+      //category: categoryData.contents,
       totalCount: data.totalCount,
-      tag: tagData.contents
+      //tag: tagData.contents
     },
     //category: categoryData.contents,
   };

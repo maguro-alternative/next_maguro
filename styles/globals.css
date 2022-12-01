@@ -11,6 +11,10 @@ p{
     padding-bottom: 20px;
 }
 
+/*a{
+    color: blue;
+}*/
+
 h1 {
 	font-size: 30px;
     padding: auto;
@@ -28,5 +32,9 @@ h2 {
     pre {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+    }
+    h1{
+        font-size: 20px;
+        line-height: 50px;
     }
 }
