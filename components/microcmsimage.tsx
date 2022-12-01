@@ -16,6 +16,8 @@ const MicroCMSImage: React.VFC<Props> = ({ src, layout, alt, ...imageProps }) =>
     placeholder="blur"
     blurDataURL={`${src}?auto=compress&w=10`}
     alt={alt}
+    priority={false}
+    loading={"lazy"} 
   />
 )
 
