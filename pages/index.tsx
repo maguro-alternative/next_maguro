@@ -63,7 +63,7 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
     </>
   );
 }    
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const data = await client.get({ endpoint: 'blog' ,queries: {  offset: 0, limit: 3 } });
   //const categoryData = await client.get({ endpoint: "category" });
   //const tagData = await client.get({ endpoint: "tag" });
