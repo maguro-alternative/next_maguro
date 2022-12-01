@@ -3,7 +3,7 @@ import type { Blog } from '../types/blog';
 import type { Category } from '../types/category';
 import type { Tag } from '../types/tag';
 import Link from 'next/link';
-//import MicroCMSImage from '../components/microcmsimage'
+import MicroCMSImage from '../components/microcmsimage'
 
 import Header from '../components/Header'
 
@@ -39,7 +39,7 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
             <div className="mainbar">
               <div className="textback">
                 <div className="rounded overflow-hidden shadow-lg relative z-2">
-                  <img
+                  <MicroCMSImage
                     src={article.eye_catch.url}
                     width={article.eye_catch.width}
                     height={article.eye_catch.height}
