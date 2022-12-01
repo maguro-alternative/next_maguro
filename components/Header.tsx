@@ -16,7 +16,7 @@ export default function Header({ title, description, icon, url, image, twitterca
   const asurl=`https://next-magurotaityouda.netlify.app${url}`
   return (
     <header className="body-font z-2">
-      <script defer src="//code.createjs.com/1.0.0/createjs.min.js"></script>
+      <script src="//code.createjs.com/1.0.0/easeljs.min.js"></script>
       <script defer src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
       
       <script defer src="/sls.js"></script>
