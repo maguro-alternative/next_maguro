@@ -1,6 +1,7 @@
 import { GetServerSideProps , GetStaticProps} from 'next';
 import Link from 'next/link';
 
+import Image from 'next/image'
 
 import type { Blog } from '../../types/blog';
 import { client } from '../../libs/client';
@@ -51,7 +52,7 @@ export default function BlogPageId({ blog,toc }:Props) {
       </div>
       <div className="px-1 py-6 mx-auto ">
         <div className="max-w-4xl px-7 py-10 mx-auto bg-gray-50 relative z-2">
-          <img
+          <Image
             className="object-cover w-full shadow-sm h-full"
             src={blog.eye_catch.url}
           />

@@ -1,5 +1,6 @@
 // pages/category/[id].js
 import Link from "next/link";
+import Image from 'next/image'
 import { useRouter } from "next/router";
 import { client } from "../../../../../libs/client";
 import type { Blog } from '../../../../../types/blog';
@@ -46,7 +47,7 @@ export default function TagId({ blog,totalCount,tag,name }:Props) {
             <div className="mainbar">
               <div className="textback">
                 <div className="rounded overflow-hidden shadow-lg relative z-2">
-                  <img
+                  <Image
                     className="w-full relative"
                     src={article.eye_catch.url}
                     alt="Sunset in the mountains"
