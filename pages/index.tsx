@@ -39,7 +39,7 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
             <div className="mainbar">
               <div className="textback">
                 <div className="rounded overflow-hidden shadow-lg relative z-2">
-                  <Image
+                  <img
                     className="w-full relative"
                     src={article.eye_catch.url}
                     alt="Sunset in the mountains"
