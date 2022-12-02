@@ -12,7 +12,7 @@ interface Props {
 }
 // <script defer src="//code.createjs.com/1.0.0/easeljs.min.js"></script>
 export default function Header({ title, description, icon, url, image, twittercard }: Props) {
-  const asurl=`https://next-magurotaityouda.netlify.app${url}`
+  const asurl=`https://next-magurotaityouda.netlify.app${url}/`
   return (
     <header className="body-font z-2">
       
@@ -32,10 +32,10 @@ export default function Header({ title, description, icon, url, image, twitterca
           <nav className="global-nav">
             <ul className="nav-list">
               <li className="nav-item"><a href='/'>トップ</a></li>
-              <li className="nav-item"><a href="/blog/page/1">記事</a></li>
-              <li className="nav-item"><a href="/catehead">カテゴリ</a></li>
-              <li className="nav-item"><a href="/taghead">タグ</a></li>
-              <li className="nav-item"><a href="/profile">自己紹介</a></li>
+              <li className="nav-item"><a href="/blog/page/1/">記事</a></li>
+              <li className="nav-item"><a href="/catehead/">カテゴリ</a></li>
+              <li className="nav-item"><a href="/taghead/">タグ</a></li>
+              <li className="nav-item"><a href="/profile/">自己紹介</a></li>
             </ul>
           </nav>
         </header>
