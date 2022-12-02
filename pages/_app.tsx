@@ -17,12 +17,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       </div>
       <footer>
         <script defer src="//code.createjs.com/1.0.0/easeljs.min.js"></script>
-        <script defer src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
-      
         <script defer src="/sls.js"></script>
         <script defer src="/ws.js"></script>
         <script defer src="/4saw.js"></script>
         <link rel="stylesheet" href="/index.css"/>
+
+        <script defer src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
       </footer>
     </>
   );
