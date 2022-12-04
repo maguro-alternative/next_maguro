@@ -45,7 +45,7 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
                     height={article.eye_catch.height}
                   />
                   <div className="sm:px-2 sm:py-1 text-1 xl:px-6 xl:py-4 relative">
-                    <Link href={`/blog/${article.id}`} passHref>
+                    <Link href={`/blog/${article.id}/`} passHref>
                       <a>{article.title}</a>
                     </Link>
                   </div>
@@ -64,7 +64,7 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
   );
 }    
 export const getStaticProps = async () => {
-  const data = await client.get({ endpoint: 'blog' ,queries: {  offset: 0, limit: 3 } });
+  const data = await client.get({ endpoint: 'blog' ,queries: {  offset: 0, limit: 3,fields:"title,main_image?q=40?dpr=2&w=300,id,createdAt,updatedAt,author.name,eye_catch" } });
   //const categoryData = await client.get({ endpoint: "category" });
   //const tagData = await client.get({ endpoint: "tag" });
 
