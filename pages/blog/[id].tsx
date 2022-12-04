@@ -104,7 +104,7 @@ export default function BlogPageId({ blog,toc }:Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ctx => {
+export const getServerSideProps: GetServerSideProps = async ctx => {
   const id = ctx.params?.id;
   const idExceptArray = id instanceof Array ? id[0] : id;
   const data = await client.get({
