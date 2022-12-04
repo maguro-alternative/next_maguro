@@ -43,6 +43,7 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
                     src={article.eye_catch.url}
                     width={article.eye_catch.width}
                     height={article.eye_catch.height}
+                    alt="Sunset in the mountains"
                   />
                   <div className="sm:px-2 sm:py-1 text-1 xl:px-6 xl:py-4 relative">
                     <Link href={`/blog/${article.id}/`} passHref>
