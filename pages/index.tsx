@@ -65,7 +65,16 @@ export default function Home({ blog,totalCount,category,tag }: Props) {
   );
 }    
 export const getStaticProps = async () => {
-  const data = await client.get({ endpoint: 'blog' ,queries: {  offset: 0, limit: 3,fields:"title,main_image?q=40?dpr=2&w=300,id,createdAt,updatedAt,author.name,eye_catch" } });
+  const data = await client.get(
+    { 
+      endpoint: 'blog' ,
+      queries: {  
+        offset: 0, 
+        limit: 3,
+        fields:"title,main_image?q=40?dpr=2&w=300,id,createdAt,updatedAt,author.name,eye_catch" 
+      } 
+    }
+  );
   //const categoryData = await client.get({ endpoint: "category" });
   //const tagData = await client.get({ endpoint: "tag" });
 

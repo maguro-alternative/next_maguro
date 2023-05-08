@@ -25,6 +25,14 @@ export default function Profile (){
                             <img className='' height="20" src="https://img.shields.io/github/followers/maguro-alternative?label=follow&logo=github&style=flat" />
                         </a>
                     </ul>
+                    <ul className='text-left flex justify-around '>
+                        <a href="https://qiita.com/maguro-alternative">
+                            <img height="20" src="https://img.shields.io/badge/maguro-alternative-${color}.svg?style=social&logo=qiita" />
+                        </a>  
+                        <a href="https://zenn.dev/maguro_alterna">
+                            <img height="20" src="https://img.shields.io/badge/マグロ-alterna-${color}.svg?style=social&logo=zenn" />
+                        </a>
+                    </ul>
                     使える言語
                     <ul className='text-left py-1 flex justify-around '>
                         <img className='px-1' src="https://img.shields.io/badge/Javascript-276DC3.svg?logo=javascript&style=flat"/>

@@ -170,6 +170,12 @@ ul li:hover{
 	background-color: #FFF2CC;
 }
 
+@media screen and (min-width: 1281px) {
+	.textback{
+		min-width: 350px;
+	}
+}
+
 @media screen and (min-width: 426px) and (max-width: 1280px)  {
 	body{
 		font-size: 1.1rem;

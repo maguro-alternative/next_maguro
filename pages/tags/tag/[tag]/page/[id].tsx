@@ -139,7 +139,16 @@ export const getStaticProps = async (context:any) => {
   //console.log(context)
   const id = context.params.tag;
   const catedata = await client.get({ endpoint: "tag" });
-  const data = await client.get({ endpoint: "blog", queries: { filters: `tags[contains]${id}`, offset: (id - 1) * 5, limit: 5 } });
+  const data = await client.get(
+    { 
+      endpoint: "blog", 
+      queries: { 
+        filters: `tags[contains]${id}`, 
+        offset: (id - 1) * 5, 
+        limit: 5 
+      } 
+    }
+  );
 
   let contentname
   for(const content of catedata.contents){
